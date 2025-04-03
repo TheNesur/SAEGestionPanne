@@ -1,0 +1,91 @@
+{% block body %}
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ECF0F1;
+        }
+
+        .wrapper{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wrapper .form-box{
+            width: 100%;
+            padding: 40px;
+        }
+
+        .btn{
+            width: 100%;
+            height: 45px;
+            background: #162938;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .menu{
+            font-size: .9em;
+            color: #162938;
+            text-align: center;
+            font-weight: 500;
+            margin: 25px 0 10px;
+        }
+
+        .menu a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .menu a:hover{
+            text-decoration: underline;
+        }
+
+        p{
+            color: #162938;
+            font-weight: 600;
+            line-height:1.5;
+        }
+
+        h1{
+            padding-bottom: 10%;
+            text-align:center;
+        }
+
+    </style>
+
+<div class="wrapper">
+    <div class="form-box">
+        <h1>Mon compte</h1>
+        <p>{{ profil | raw }}</p>
+        <div class="menu">
+            <a href="{{ path('admin;index') }}" class="register-link">Accueil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

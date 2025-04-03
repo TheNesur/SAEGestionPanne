@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+        .container{
+            min-height: 100vh;
+            background-color: #ECF0F1;
+            
+        }
+         .menu a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .menu a:hover{
+            text-decoration: underline;
+        }
+        p {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        #logAra {
+            width: 100%;
+            height: 80vh;
+            resize: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="menu">
+            <a href="{{ path('admin;index') }}" class="register-link">Retour à l'accueil</a>
+        </div>
+        <h1 class="my-4">Affichage de logs</h1>
+        <input class="form-control mb-4" id="filterInput" type="text" placeholder="Filtrer les logs...">
+
+        <form action="{{ path('app_generate_logs') }}" method="post">
+            <button type="submit" id="generateLog" class="btn btn-primary mb-4">Générer un fichier de logs</button>
+        </form>
+
+        <div class="card">
+            <textarea id="logAra" name="card-bod" readonly>
+{% for log in logs_message %}
+    {{ log }}
+{% endfor %}
+            </textarea>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+{% endblock %}

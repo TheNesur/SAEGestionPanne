@@ -1,0 +1,179 @@
+
+{% block body %}
+ <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ECF0F1;
+        }
+
+        .titre {
+            font-size: 2em;
+            color: #fff;
+            user-select: none;
+        }
+
+        .wrapper{
+            position: relative;
+            width: 400px;
+            height: auto;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wrapper .form-box{
+            width: 100%;
+            padding: 40px;
+        }
+
+        .wrapper .icon-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45px;
+            height: 45px;
+            background: #162938;
+            font-size: 2em;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .input-box .icon{
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: #162938;
+            line-height: 57px;
+        }
+
+        .input-box{
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid #162938;
+            margin: 30px 0;
+        }
+
+        .input-box label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: #162938;
+            font-weight: 500;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label,.input-box input:valid~label{
+            top: -5px;
+        }
+
+        .input-box input{
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: #162938;
+            font-weight: 600;
+            padding: 0 35px 0 5px;
+        }
+
+        .btn{
+            width: 100%;
+            height: 45px;
+            background: #162938;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .login{
+            font-size: .9em;
+            color: #162938;
+            text-align: center;
+            font-weight: 500;
+            margin: 25px 0 10px;
+        }
+
+        .login p a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login p a:hover{
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="wrapper">    
+    <div class="form-box register">
+        {{ form_start(registrationForm) }}
+            <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+            <div class="input-box">
+                <span class="icon"></ion-icon><ion-icon name="person-circle-outline"></ion-icon></span>
+                {{ form_widget(registrationForm.first_name)}}
+                {{ form_label(registrationForm.first_name,'Prénom')}}  
+            </div>
+            <div class="input-box">
+            <span class="icon"></ion-icon><ion-icon name="person-circle-outline"></ion-icon></span>
+                {{ form_widget(registrationForm.name)}}
+                {{ form_label(registrationForm.name,'Nom')}} 
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                {{ form_widget(registrationForm.email)}}
+                {{ form_label(registrationForm.email,'Email')}} 
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-add"></ion-icon></span>
+                {{ form_widget(registrationForm.username)}}
+                {{ form_label(registrationForm.username,"Nom d'utilisateur")}} 
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                {{ form_widget(registrationForm.plainPassword)}}
+                {{ form_label(registrationForm.plainPassword,'Mot de passe')}} 
+            </div>
+            <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+
+        <div class="login">
+            <p>Déjà un compte ? 
+                <a href="/" class="login-link">Se connecter</a>
+            </p>
+        </div>
+    </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% endblock %}
